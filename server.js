@@ -10,6 +10,9 @@ const server = express();
 server.use(helmet());
 server.use(express.json());
 
+const dishesRouter = require('./dishes/dishesRouter')
+
+server.use('/api/dishes', dishesRouter)
 
 
 module.exports = server;
