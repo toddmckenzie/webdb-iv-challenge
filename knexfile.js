@@ -5,9 +5,8 @@ module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
-      filename: './data/lambdaDishes/.db3'
-    }
-  },
-  useNullAsDefault: true,
- 
+      filename: './data/lambdaschool.db3' 
+    },
+    useNullAsDefault: true
+  }
 };

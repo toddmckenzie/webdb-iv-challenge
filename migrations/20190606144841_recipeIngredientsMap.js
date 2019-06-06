@@ -1,13 +1,13 @@
 
 exports.up = function(knex, Promise) {
-    return knex.schema.createTable('recipes', function(tbl) {
-        tbl.string('quantity', Float).notNullable();
+    return knex.schema.createTable('recipesIngredientsMap', function(tbl) {
+        tbl.float('quantity').notNullable();
         tbl
-        .integer('dishes_id')
+        .integer('recipes_id')
         .unsigned()
         .notNullable()
         .references('id')
-        .inTable('dishes')
+        .inTable('recipes')
         .onDelete('CASCADE')
         .onUpdate('CASCADE');
         tbl
@@ -22,7 +22,7 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  
+    return knex.schema.dropTableIfExists('recipesIngredientsMap')
 };
 
 

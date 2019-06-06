@@ -1,7 +1,7 @@
 
 exports.up = function(knex, Promise) {
     return knex.schema.createTable('instructions', function(tbl) {
-        tbl.integer('step').notNullable();
+        tbl.integer('step');
         tbl
         .integer('recipes_id')
         .unsigned()
@@ -10,7 +10,7 @@ exports.up = function(knex, Promise) {
         .inTable('recipes')
         .onDelete('CASCADE')
         .onUpdate('CASCADE');
-        tbl.string('Step Description',)
+        tbl.string('StepDescription')
     })
 };
 
