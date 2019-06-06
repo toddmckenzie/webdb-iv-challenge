@@ -10,7 +10,7 @@ exports.up = function(knex, Promise) {
         .inTable('recipes')
         .onDelete('CASCADE')
         .onUpdate('CASCADE');
-        tbl.string('StepDescription')
+        tbl.string('StepDescription').notNullable();
     })
 };
 
