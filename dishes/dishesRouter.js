@@ -17,4 +17,38 @@ router.get('/', (req, res) => {
         })
 })
 
+//working
+router.post('/', (req, res) => {
+    db('dishes')
+        .insert(req.body)
+        .then(result => {
+            res.json(result)
+        })
+        .catch(error => {
+            res.status(500).json({ message: 'Internal server error'})
+        })
+})
+
+//working
+router.get('/:id', (req, res) => {
+    db('dishes')
+        .where({ id: req.params.id })
+        .then(result => {
+            res.json(result)
+        })
+        .catch(error => {
+            res.status(500).json({ message: 'Internal server error'})
+        })
+})
+
+router.get('/recipes', (req, res) => {
+    db('recipes')
+        .then(result => {
+            res.json(result)
+        })
+        .catch(error => {
+            res.status(500).json({ message: 'Internal server error'})
+        })
+})
+
 module.exports = router;
