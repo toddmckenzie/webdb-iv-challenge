@@ -42,12 +42,26 @@ router.get('/:id', (req, res) => {
 })
 
 router.get('/recipes', (req, res) => {
-    db('recipes')
+    db('dishes')
+        .where({ "recipes.dishes_id": id})
+        .join("recipes")
+        .select("dishes.name as Dish", "recipes.name as recipe")
         .then(result => {
             res.json(result)
         })
         .catch(error => {
             res.status(500).json({ message: 'Internal server error'})
+        })
+})
+
+router.post('/recipes', (req, res) => {
+    db('recipes')
+        .insert(req.body)
+        .then(result => {
+            res.status(201).json(result)
+        })
+        .catch(error => {
+            res.status(500).json({ message: 'Internal server error.'})
         })
 })
 
